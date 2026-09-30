@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi agenda</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- Pantalla de acceso -->
+    <section id="auth" class="card auth" hidden>
+      <h1>Mi agenda</h1>
+      <p>Inicia sesión o crea una cuenta para abrir tu agenda.</p>
+      <form id="authForm" novalidate>
+        <label for="email">Correo</label>
+        <input id="email" type="email" autocomplete="email" required>
+        <label for="password">Contraseña (mínimo 6 caracteres)</label>
+        <input id="password" type="password" autocomplete="current-password" minlength="6" required>
+        <p class="err" id="authErr" role="alert"></p>
+        <button class="main" type="submit" id="loginBtn">Iniciar sesión</button>
+        <button type="button" id="signupBtn">Crear cuenta</button>
+      </form>
+    </section>
+
+    <!-- Agenda -->
+    <main id="app" hidden>
+      <header>
+        <h1>Mi agenda</h1>
+        <div class="who">
+          <span id="hello"></span>
+          <button type="button" id="logoutBtn">Cerrar sesión</button>
+        </div>
+      </header>
+
+      <div class="grid">
+        <form id="f" class="card" novalidate>
+          <h2>Nuevo evento</h2>
+          <label for="title">Título</label>
+          <input id="title" maxlength="80" required autocomplete="off">
+          <div class="row">
+            <div><label for="date">Fecha</label><input id="date" type="date" required></div>
+            <div><label for="time">Hora</label><input id="time" type="time"></div>
+          </div>
+          <label for="note">Nota</label>
+          <textarea id="note" maxlength="300"></textarea>
+          <p class="err" id="err" role="alert"></p>
+          <button class="main" type="submit">Guardar evento</button>
+        </form>
+
+        <section class="card">
+          <div class="tabs" id="tabs">
+            <button data-f="all" aria-pressed="true">Todos</button>
+            <button data-f="today" aria-pressed="false">Hoy</button>
+            <button data-f="next" aria-pressed="false">Próximos</button>
+            <button data-f="done" aria-pressed="false">Hechos</button>
+          </div>
+          <div id="list"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
